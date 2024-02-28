@@ -19,7 +19,9 @@ const LoginDialog = ({open , setOpen}) => {
      <Dialog open={open} onClose={handleClose}>
         <Component>
             <Box style={{display:'flex',height:'100%'}}>
-            <Image><Typography variant="h5"></Typography></Image>
+            <Image><Typography variant="h5">Login</Typography>
+            <Typography variant="h5">Get access to your Orders, Wishlist and Recommendations</Typography>
+            </Image>
             <Box>
             <TextField variant="standard" label="Enter Email/Mobile Number"/>
             <TextField variant="standard" label="Enter Password"/>
