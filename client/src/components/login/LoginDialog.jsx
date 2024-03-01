@@ -9,6 +9,8 @@ import {
   styled,
 } from "@mui/material";
 
+import { authenticateSignup } from "../../service/api"; //2:18PM 1-03-2024
+
 const Component = styled(Box)`
   height: 70vh;
   width: 90vh;
@@ -114,14 +116,14 @@ const [signup , setSignup]= useState(signupInitialValues);
 
   const onInputChange = (e) => {
    setSignup({...signup, [e.target.name]: e.target.value });
-   console.log(signup);
+  //  console.log(signup);
 
   }
 
     //01-03-2024 10:54AM
 
-    const signupUser = () =>{
-        
+    const signupUser = async () =>{
+    let response=  await   authenticateSignup(signup);
     }
 
 

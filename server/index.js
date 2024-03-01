@@ -1,15 +1,23 @@
 // File  created on 03-01-2024
 
-import express from 'express';  // importing express 03-01-2023
+import express, { Router } from 'express';  // importing express 03-01-2023
 
 import Connection from './database/db.js';    //DataBase connection file 04-01-2024
 
 import dotenv from 'dotenv';   //10-01-2024
 import DefaultData from './default.js'; //10-01-2024
 
+import cors from 'cors'; //01-03-2024 3:03PM
+
+import router from './routes/route.js'; //01-03-2024 2:44PM
+
 const app = express(); // To initialise express js
 
 dotenv.config(); //10-01-2024 initializing dotenv
+
+app.use(cors());
+
+app.use('/',router);  //01-03-2024 2:45PM
 
 const PORT =8000;
 
