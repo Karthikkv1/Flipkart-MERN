@@ -18,8 +18,8 @@ const Image = styled(Box)`
   background: #2874f0
     url(https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/login_img_c4a81e.png)
     center 85% no-repeat;
-  height: 100%;
-  width: 40%;
+  height: 83%;
+  width: 28%;
   padding: 45px 35px;
   & > p,
   & > h5 {
@@ -74,25 +74,56 @@ const CreateAccount = styled(Typography)`
 
 const accountInitialValues = {
     login:{
-        view:'login'
+        view:'login',
+        heading:"Login",
+        subHeading:'Get access to your wishlist and Recommendations'
     },
     signup:{
-        view:'signup'
+        view:'signup',
+        heading:"Looks like you're new here!",
+        subHeading:'Sign Up with your mobile number to get started'
     }
 }
-
+ //01-03-2024 10:43AM To store Inputed values in sign up form
+const signupInitialValues ={
+    firstname:'',
+    lastname:'',
+    username:'',
+    email:'',
+    password:'',
+    phone:''
+}
 const LoginDialog = ({ open, setOpen }) => {
 
-const [account , toggleAccount] = useState(accountInitialValues.login)
+const [account , toggleAccount] = useState(accountInitialValues.login);
+const [signup , setSignup]= useState(signupInitialValues);
+
+
 
   const handleClose = () => {
     setOpen(false);
+    toggleAccount(accountInitialValues.login);
   }
 
   const toggleSignup = () => {
- toggleAccount(accountInitialValues.signup)
+ toggleAccount(accountInitialValues.signup);
 
   }
+
+  //01-03-2024 10:35AM
+
+  const onInputChange = (e) => {
+   setSignup({...signup, [e.target.name]: e.target.value });
+   console.log(signup);
+
+  }
+
+    //01-03-2024 10:54AM
+
+    const signupUser = () =>{
+        
+    }
+
 
   return (
     <Dialog
@@ -104,9 +135,9 @@ const [account , toggleAccount] = useState(accountInitialValues.login)
       <Component>
         <Box style={{ display: "flex", height: "100%" }}>
           <Image>
-            <Typography variant="h5">Login</Typography>
+            <Typography variant="h5">{account.heading}</Typography>
             <Typography style={{ marginTop: 20 }}>
-              Get access to your Orders, Wishlist and Recommendations
+            {account.subHeading}
             </Typography>
           </Image>
           {
@@ -125,14 +156,14 @@ const [account , toggleAccount] = useState(accountInitialValues.login)
             </Wrapper>
            : 
             <Wrapper>
-              <TextField variant="standard" label="Enter Firstname" />
-              <TextField variant="standard" label="Enter Lastname" />
-              <TextField variant="standard" label="Enter Username" />
-              <TextField variant="standard" label="Enter Email" />
-              <TextField variant="standard" label="Enter Password" />
-              <TextField variant="standard" label="Enter Phone" />
+              <TextField variant="standard"  onChange={(e) => onInputChange(e)} name='firstname' label="Enter Firstname" />
+              <TextField variant="standard" onChange={(e) => onInputChange(e)} name='lastname' label="Enter Lastname" />
+              <TextField variant="standard"  onChange={(e) => onInputChange(e)} name='username' label="Enter Username" />
+              <TextField variant="standard"  onChange={(e) => onInputChange(e)}  name='email' label="Enter Email" />
+              <TextField variant="standard"  onChange={(e) => onInputChange(e)} name='password' label="Enter Password" />
+              <TextField variant="standard"  onChange={(e) => onInputChange(e)} name='phone' label="Enter Phone" />
               
-              <LoginButton>Continue</LoginButton>
+              <LoginButton onClick={()=> signupUser()}>Continue</LoginButton>
             
             </Wrapper>
           }
