@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useContext } from "react";
 
 import {
   Dialog,
@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 
 import { authenticateSignup } from "../../service/api"; //2:18PM 1-03-2024
+import { DataContext  } from "../../context/DataProvider"; //01-03-2024 9:35PM
 
 const Component = styled(Box)`
   height: 70vh;
@@ -100,6 +101,8 @@ const LoginDialog = ({ open, setOpen }) => {
 const [account , toggleAccount] = useState(accountInitialValues.login);
 const [signup , setSignup]= useState(signupInitialValues);
 
+ const { setAccount} = useContext(DataContext); //01-03-2024 9:46PM
+
 
 
   const handleClose = () => {
@@ -124,6 +127,10 @@ const [signup , setSignup]= useState(signupInitialValues);
 
     const signupUser = async () =>{
     let response=  await   authenticateSignup(signup);
+    // console.log(response);
+    if (!response) return;
+    handleClose();
+    setAccount(signup.firstname); // 01-03-2024 9:47PM
     }
 
 

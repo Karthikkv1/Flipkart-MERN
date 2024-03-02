@@ -1,8 +1,10 @@
-import { useState } from "react"; //28-02-2024
+import { useState ,useContext } from "react"; //28-02-2024
 
 import { Box, Button, Typography, styled } from "@mui/material";
 
-import { ShoppingCart } from "@mui/icons-material";
+import { ShoppingCart } from "@mui/icons-material"; 
+
+import { DataContext } from "../../context/DataProvider"; //01-03-2024 8:52PM
 
 //Components 28-02-2024
 import LoginDialog from "../login/LoginDialog";
@@ -37,6 +39,9 @@ const LoginButton = styled(Button)`
 const CustomButtons = () => {
   const [open, setOpen] = useState(false);
 
+  const {account} =useContext(DataContext);
+
+
   const openDialog = ()  =>
   {
     setOpen(true);
@@ -44,9 +49,16 @@ const CustomButtons = () => {
   }
   return (
     <Wrapper>
-      <LoginButton variant="contained" onClick={() => openDialog()}>
+      {
+        account ? <Typography>{account}</Typography>:
+        <LoginButton variant="contained" onClick={() => openDialog()}>
         Login
       </LoginButton>
+      }
+
+      {/* <LoginButton variant="contained" onClick={() => openDialog()}>
+        Login
+      </LoginButton> */}
 
       <Typography style={{ marginTop: 3, width: 135 }}>
         Become a Seller
