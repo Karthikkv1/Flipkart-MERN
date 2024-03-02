@@ -8,6 +8,7 @@ import { DataContext } from "../../context/DataProvider"; //01-03-2024 8:52PM
 
 //Components 28-02-2024
 import LoginDialog from "../login/LoginDialog";
+import Profile from "./Profile"; //02-03-2024 9:58AM
 
 const Wrapper = styled(Box)`
   display: flex;
@@ -50,7 +51,7 @@ const CustomButtons = () => {
   return (
     <Wrapper>
       {
-        account ? <Typography>{account}</Typography>:
+        account ? <Profile account={account}/>: //Modified on 02-03-2024 9:56AM 
         <LoginButton variant="contained" onClick={() => openDialog()}>
         Login
       </LoginButton>
