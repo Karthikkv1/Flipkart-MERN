@@ -8,10 +8,16 @@ const Component = styled(Menu)`
 margin-top:5px;
 
 
+`;
+
+const Logout =styled(Typography)`
+font-size:14px;
+margin-left:20px;
+
 `
 
 
-const Profile = ({account}) => {
+const Profile = ({account,setAccount}) => {
 
     const [open,setOpen] = useState(false);
 
@@ -24,9 +30,13 @@ const Profile = ({account}) => {
         setOpen(false);
     }
 
+    const logoutUser =() =>{
+      setAccount('');
+    }
+
     return(
         <>
-       <Box onClick={handleClick}> <Typography style={{marginTop:2}}>{account}</Typography> </Box>
+       <Box onClick={handleClick}> <Typography style={{marginTop:2 ,cursor:'pointer'}}>{account}</Typography> </Box>
 
        <Component
       
@@ -35,9 +45,9 @@ const Profile = ({account}) => {
         onClose={handleClose}
     
       >
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={() =>{handleClose(); logoutUser();}}>
             <PowerSettingsNewIcon color="primary" fontSize="small"/>
-            <Typography>Logout</Typography>
+            <Logout>Logout</Logout>
         </MenuItem>
     
       </Component>

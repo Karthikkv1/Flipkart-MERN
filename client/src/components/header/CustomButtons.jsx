@@ -40,7 +40,7 @@ const LoginButton = styled(Button)`
 const CustomButtons = () => {
   const [open, setOpen] = useState(false);
 
-  const {account} =useContext(DataContext);
+  const {account,setAccount} =useContext(DataContext); //Modified on 02-03-2024 1:16PM 
 
 
   const openDialog = ()  =>
@@ -51,7 +51,7 @@ const CustomButtons = () => {
   return (
     <Wrapper>
       {
-        account ? <Profile account={account}/>: //Modified on 02-03-2024 9:56AM 
+        account ? <Profile account={account} setAccount={setAccount}/>: //Modified on 02-03-2024 9:56AM 
         <LoginButton variant="contained" onClick={() => openDialog()}>
         Login
       </LoginButton>
