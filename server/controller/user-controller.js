@@ -38,8 +38,8 @@ export const userLogin = async(request,response) => {
 const username = request.body.username;
 const password =request.body.password;
 
-let user = await User.findOne({username:username,password:password});   //02-03-2024 1:54PM 
-if(user){
+let user = await User.findOne({username: username,password: password});   //02-03-2024 1:54PM 
+if (user){
     return response.status(200).json({ data: user});
 }
 else{

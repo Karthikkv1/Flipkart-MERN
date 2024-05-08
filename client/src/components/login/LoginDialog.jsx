@@ -82,7 +82,7 @@ line-height:0;
 margin-top:10px;
 font-weight:600;
 
-`
+`;
 
 const accountInitialValues = {
   login: {
@@ -125,18 +125,18 @@ const LoginDialog = ({ open, setOpen }) => {
     setOpen(false);
     toggleAccount(accountInitialValues.login);
     setError(false);
-  };
+  }
 
   const toggleSignup = () => {
     toggleAccount(accountInitialValues.signup);
-  };
+  }
 
   //01-03-2024 10:35AM
 
   const onInputChange = (e) => {
     setSignup({ ...signup, [e.target.name]: e.target.value });
     //  console.log(signup);
-  };
+  }
 
   //01-03-2024 10:54AM
 
@@ -146,12 +146,12 @@ const LoginDialog = ({ open, setOpen }) => {
     if (!response) return;
     handleClose();
     setAccount(signup.firstname); // 01-03-2024 9:47PM
-  };
+  }
 
   //02-03-2024 1:28PM
   const onValueChange = (e) => {
     setLogin({ ...login, [e.target.name]: e.target.value }); //02-03-2024 1:35PM
-  };
+  }
 
   //02-03-2024 1:36PM
   const loginUser = async () => {
@@ -165,7 +165,7 @@ const LoginDialog = ({ open, setOpen }) => {
 
       setError(true);
     }
-  };
+  }
 
   return (
     <Dialog
@@ -190,7 +190,7 @@ const LoginDialog = ({ open, setOpen }) => {
                 name="username"
                 label="Enter Username"
               /> 
-              {error && <Error>Please Entervalid username or password</Error>}
+              { error && <Error>Please Enter valid username or password</Error>}
               <TextField
                 variant="standard"
                 onChange={(e) => onValueChange(e)}
