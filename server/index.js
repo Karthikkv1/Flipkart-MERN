@@ -22,7 +22,7 @@ app.use(bodyParser.urlencoded({extended:true}))
 
 app.use('/',router);  //01-03-2024 2:45PM
 
-const PORT =8000;
+const PORT =;
 
 const USERNAME = process.env.DB_USERNAME;        //10-01-2024
 const PASSWORD = process.env.DB_PASSWORD;  //10-01-2024
